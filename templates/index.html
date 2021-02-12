@@ -1,0 +1,56 @@
+<html>
+
+<head>
+  <title> Sensors </title>
+  <style>
+    #ws-status {background-color: #faa;
+                padding-inline: 3px;}
+    table, th, td {
+              border: 1px solid black;
+            }
+  </style>
+
+</head>
+
+<body>
+
+Connection: <span id="ws-status"> Waiting... </span>
+<div id='errorInfo'></div>
+
+<p>
+Server Light:
+<input type="button" id="server_light"  value="OFF">
+<br>
+
+<h4>Sensor</h4>
+<input type="button" id="dist_measure"  value="Measure">
+<input type="button" id="dist_multipulse"  value="Multipulse">
+<span id="dMeasurement"></span>
+</p>
+
+<h4> Data Logger </h4>
+Timestep: <input type="number" id="dist_dt"  min="0" value='0.1'> seconds<br>
+Total Time: <input type="number" id="dist_tt"  min="0" value='2'> seconds<br>
+<input type="button" id="dist_log"  value="Log">Logs everything then updates the table.<br>
+<input type="button" id="dist_log_feed"  value="Log (Feed)">: Gives continuous updates to the table.
+<span id="logError"></span>
+<span id="logging"></span>
+
+<div id="log_data">
+<table id='log_table'>
+<tr><th>Time (sec)</th><th>Data</th></tr>
+</table>
+</div>
+
+
+
+
+
+
+<!-- Scripts -->
+<script src="{{ static_url("jquery-3.4.1.min.js") }}"></script>
+<script src="{{ static_url("ws-client.js") }}"></script>
+
+</body>
+
+</html>
