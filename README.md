@@ -88,30 +88,32 @@ Ref: https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-ci
 > sudo apt-get install -y python-smbus
 > sudo apt-get install -y i2c-tools
 
-# activate interfaces
+## activate interfaces
 > sudo raspi-config
+
 ---- Interfacing Options
 ------ I2C
 -------- Yes
 ---------- Yes
+
 ---- Interfacing Options
 ------ SPI
 -------- Yes
 ---------- Yes
 
-# REBOOT pi
+## REBOOT pi
 > sudo reboot
 
-# Test I2C (only shows something if an I2C device is attached)
+* Test I2C (only shows something if an I2C device is attached)
 > sudo i2cdetect -y 1
-# Test SPI
+* Test SPI
 > ls -l /dev/spidev*
 
 # For OLED (and other things possibly)
-3) install adafruit-blinka
+install adafruit-blinka
 > sudo pip3 install adafruit-blinka
 
-4) install Pi OLED library
+Install Pi OLED library
 > sudo pip3 install adafruit-circuitpython-ssd1306
 
 
@@ -121,13 +123,16 @@ Setting up the tornado server used for Websockets
 
 ## Starting up on boot
 ** IMPORTANT **: the directory with the files needs to be in the pi home directory (e.g. /home/pi/GitHub/PiSensorBoxes) with this setup. You can change this but be sure to put the full path to the commands
-# set up to start server automatically on startup
-# from: https://learn.sparkfun.com/tutorials/how-to-run-a-raspberry-pi-program-on-startup
-# Edit /etc/rc.local (the easy way)
+### set up to start server automatically on startup
+from: https://learn.sparkfun.com/tutorials/how-to-run-a-raspberry-pi-program-on-startup
+
+Edit /etc/rc.local (the easy way)
 > sudo nano /etc/rc.local
+
 ADD THE LINES (before 'exit 0' ):
- /usr/bin/python3 /home/pi/GitHub/PiSensorBoxes/server.py 2> /home/pi/error.log &
- /usr/bin/python3 /home/pi/GitHub/PiSensorBoxes/measure_distance.py  &
+
+> /usr/bin/python3 /home/pi/GitHub/PiSensorBoxes/server.py 2> /home/pi/error.log &
+> /usr/bin/python3 /home/pi/GitHub/PiSensorBoxes/measure_distance.py  &
 
 
 
